@@ -1,5 +1,6 @@
 import { publicProcedure, router } from './utils/trpc';
 import { todoInputSchema } from './validator/todo.validator';
+import { createHTTPServer } from '@trpc/server/adapters/standalone';
 
 const appRouter = router({
   createTodo: publicProcedure.input(todoInputSchema).mutation(async (opts) => {
@@ -13,5 +14,11 @@ const appRouter = router({
     };
   }),
 });
+
+const server = createHTTPServer({
+  router: appRouter,
+});
+
+server.listen(8000);
 
 export type AppRouter = typeof appRouter;
