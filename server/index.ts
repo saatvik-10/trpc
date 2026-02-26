@@ -1,4 +1,5 @@
 import { publicProcedure, router } from './utils/trpc';
+import { signupSchema } from './validator/signup.validator';
 import { todoInputSchema } from './validator/todo.validator';
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
 
@@ -12,6 +13,17 @@ const appRouter = router({
     return {
       id: '1',
     };
+  }),
+  signUp: publicProcedure.input(signupSchema).mutation(async (opts) => {
+    let email = opts.input.email;
+    let password = opts.input.password;
+
+    //db calls, validations
+    //jwt signing
+
+    let token = 'token';
+
+    return { token };
   }),
 });
 
