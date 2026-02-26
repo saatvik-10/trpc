@@ -1,12 +1,18 @@
+import { create } from 'node:domain';
 import { trpc } from '.';
 
 async function main() {
-  let res = await trpc.createTodo.mutate({
+  let createTodo = await trpc.createTodo.mutate({
     title: 'My Todo',
     description: 'This is my first todo',
   });
 
-  console.log(res);
+  let signUp = await trpc.signUp.mutate({
+    email: 'sm@gmail.com',
+    password: 'kotharimdc',
+  });
+
+  console.log({createTodo, signUp})
 }
 
 main();
