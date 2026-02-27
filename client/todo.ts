@@ -1,4 +1,3 @@
-import { create } from 'node:domain';
 import { trpc } from '.';
 
 async function main() {
@@ -12,7 +11,7 @@ async function main() {
     password: 'kotharimdc',
   });
 
-  console.log({createTodo, signUp})
+  console.log({ createTodo, signUp });
 }
 
 main();
